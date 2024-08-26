@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Message } from ".";
 import { Textarea } from "../ui/textarea";
 import { Paperclip } from "lucide-react";
@@ -10,11 +10,12 @@ type UserInputMessage = {
 type InputMessageProps = {
     messages: Message[];
     setMessages: (messages: Message[]) => void;
+    mutate: (message: Message) => void;
 };
 
 
 
-export const InputMessage = ({ messages, setMessages }: InputMessageProps) => {
+export const InputMessage = ({ messages, setMessages, mutate }: InputMessageProps) => {
     const { control, handleSubmit, reset } = useForm<UserInputMessage>();
     const onSubmit: SubmitHandler<UserInputMessage> = (data) => {
         console.log(data);
@@ -24,6 +25,11 @@ export const InputMessage = ({ messages, setMessages }: InputMessageProps) => {
             sender: "user",
         }]);
         reset();
+        mutate({
+            id: (messages.length + 1).toString(),
+            content: data.content,
+            sender: "user"
+        });
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
