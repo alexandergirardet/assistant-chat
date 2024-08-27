@@ -8,27 +8,28 @@ type UserInputMessage = {
 };
 
 type InputMessageProps = {
-    messages: Message[];
-    setMessages: (messages: Message[]) => void;
+    setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
     mutate: (message: Message) => void;
 };
 
 
 
-export const InputMessage = ({ messages, setMessages, mutate }: InputMessageProps) => {
+export const InputMessage = ({ setMessages, mutate }: InputMessageProps) => {
     const { control, handleSubmit, reset } = useForm<UserInputMessage>();
     const onSubmit: SubmitHandler<UserInputMessage> = (data) => {
         console.log(data);
-        setMessages([...messages, {
-            id: (messages.length + 1).toString(),
-            content: data.content,
-            sender: "user",
-        }]);
+        setMessages((prev) => [
+            ...prev,
+            {
+                role: "user",
+                content: [{ type: "text", text: { value: data.content } }],
+            },
+        ]);
+
         reset();
         mutate({
-            id: (messages.length + 1).toString(),
-            content: data.content,
-            sender: "user"
+            content: [{ type: "text", text: { value: data.content } }],
+            role: "user"
         });
     };
     return (

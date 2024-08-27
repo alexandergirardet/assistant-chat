@@ -5,31 +5,30 @@ import { InputMessage } from "./input-message"
 import { useMutation } from "@tanstack/react-query";
 import { MessageDeltaEvent } from "openai/resources/beta/threads/messages";
 
+interface TextContent {
+    type: string;
+    text: {
+        value: string;
+    };
+}
 
 export interface Message {
-    id: string;
-    content: string;
-    sender: "user" | "bot";
+    role: "user" | "bot";
+    content: TextContent[];
 }
 
 export const Chat = () => {
     const [messages, setMessages] = useState<Message[]>([
         {
-            id: "1",
-            content: "Hello, how are you?",
-            sender: "bot",
+            role: "user",
+            content: [{ type: "text", text: { value: "Hello, how are you?" } }],
         },
         {
-            id: "2",
-            content: "I'm fine, thank you!",
-            sender: "user",
-        },
-        {
-            id: "3",
-            content: "What is your name?",
-            sender: "bot",
+            role: "bot",
+            content: [{ type: "text", text: { value: "I am fine, thank you!" } }],
         },
     ]);
+    console.log("Messages", messages);
 
     const handleEventTypeAndData = (eventType: string, eventData: any) => {
         if (eventType.trim() === "thread.message.delta") {
@@ -42,10 +41,35 @@ export const Chat = () => {
 
     const handleMessageCreated = (messageStart: unknown) => {
         console.log("Message Start", messageStart);
+        setMessages((prev) => [...prev, {
+            role: "bot",
+            content: [{ type: "text", text: { value: "" } }],
+        }])
     }
 
     const handleMessageDelta = (messageDelta: MessageDeltaEvent) => {
         console.log("Message Delta", messageDelta);
+        setMessages((prev) => {
+            const newMessages = [...prev];
+            const lastMessage = { ...newMessages[newMessages.length - 1] };
+            console.log("Last Message", lastMessage);
+
+            lastMessage.content = [
+                {
+                    ...lastMessage.content[0],
+                    text: {
+                        ...lastMessage.content[0].text,
+                        value:
+                            lastMessage.content[0].text.value +
+                            messageDelta.delta.content?.[0].text.value, // Todo: Fix this, it's an issue with the MessageDeltaEvent type
+                    },
+                },
+            ];
+            console.log("Last Message After Update", lastMessage);
+            newMessages[newMessages.length - 1] = lastMessage;
+            return newMessages;
+            // return newMessages;
+        });
     }
 
     const handleSSEEvent = (SSEEvent: string) => {
@@ -78,7 +102,7 @@ export const Chat = () => {
                 headers: {
                     "Content-Type": "text/event-stream",
                 },
-                body: JSON.stringify(message),
+                body: JSON.stringify({ message: message.content[0].text.value }),
             });
             if (!response.ok) {
                 throw new Error("Response is not ok");
@@ -104,7 +128,7 @@ export const Chat = () => {
         <Card className="col-span-4 h-screen flex flex-col p-4 border-0">
             <CardContent id="card-content" className="flex-grow flex flex-col bg-gray-100 rounded-lg">
                 <Messages messages={messages} />
-                <InputMessage messages={messages} setMessages={setMessages} mutate={mutate} />
+                <InputMessage setMessages={setMessages} mutate={mutate} />
             </CardContent>
         </Card>
     )
