@@ -1,0 +1,3160 @@
+
+> dev
+> bun run --hot src/app.ts
+
+Started server http://localhost:3000
+Received message {
+  message: "I want you to upload this file",
+  uploadFileURL: null,
+}
+Message parsed I want you to upload this file
+Thread created {
+  id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+  object: "thread",
+  created_at: 1724773954,
+  metadata: {},
+  tool_resources: {},
+}
+Message created {
+  id: "msg_6ViYHuWe7vktZ480PMjJKmPj",
+  object: "thread.message",
+  created_at: 1724773954,
+  assistant_id: null,
+  thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+  run_id: null,
+  role: "user",
+  content: [
+    {
+      type: "text",
+      text: {
+        value: "I want you to upload this file",
+        annotations: [],
+      },
+    }
+  ],
+  attachments: [],
+  metadata: {},
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.created",
+  data: {
+    id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    object: "thread.run",
+    created_at: 1724773955,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    status: "queued",
+    started_at: null,
+    expires_at: 1724774555,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.queued",
+  data: {
+    id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    object: "thread.run",
+    created_at: 1724773955,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    status: "queued",
+    started_at: null,
+    expires_at: 1724774555,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.in_progress",
+  data: {
+    id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    object: "thread.run",
+    created_at: 1724773955,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    status: "in_progress",
+    started_at: 1724773956,
+    expires_at: 1724774555,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.created",
+  data: {
+    id: "step_nS9TyS8CFE8sFXsbOgHzynhD",
+    object: "thread.run.step",
+    created_at: 1724773958,
+    run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    type: "message_creation",
+    status: "in_progress",
+    cancelled_at: null,
+    completed_at: null,
+    expires_at: 1724774555,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "message_creation",
+      message_creation: {
+        message_id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+      },
+    },
+    usage: null,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.in_progress",
+  data: {
+    id: "step_nS9TyS8CFE8sFXsbOgHzynhD",
+    object: "thread.run.step",
+    created_at: 1724773958,
+    run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    type: "message_creation",
+    status: "in_progress",
+    cancelled_at: null,
+    completed_at: null,
+    expires_at: 1724774555,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "message_creation",
+      message_creation: {
+        message_id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+      },
+    },
+    usage: null,
+  },
+}
+Is the client stream closed? false
+Message created {
+  id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+  object: "thread.message",
+  created_at: 1724773958,
+  assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+  thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+  run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+  status: "in_progress",
+  incomplete_details: null,
+  incomplete_at: null,
+  completed_at: null,
+  role: "assistant",
+  content: [],
+  attachments: [],
+  metadata: {},
+}
+Event {
+  event: "thread.message.created",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message",
+    created_at: 1724773958,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    status: "in_progress",
+    incomplete_details: null,
+    incomplete_at: null,
+    completed_at: null,
+    role: "assistant",
+    content: [],
+    attachments: [],
+    metadata: {},
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.in_progress",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message",
+    created_at: 1724773958,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    status: "in_progress",
+    incomplete_details: null,
+    incomplete_at: null,
+    completed_at: null,
+    role: "assistant",
+    content: [],
+    attachments: [],
+    metadata: {},
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: "Please",
+            annotations: [],
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " go",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " ahead",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " and",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " upload",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " the",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " file",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " you'd",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " like",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " to",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " post",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: ".",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " I'll",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " guide",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " you",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " through",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " the",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " next",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " steps",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " once",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " it's",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " uploaded",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: ".",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? false
+Message completed {
+  id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+  object: "thread.message",
+  created_at: 1724773958,
+  assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+  thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+  run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+  status: "completed",
+  incomplete_details: null,
+  incomplete_at: null,
+  completed_at: 1724773961,
+  role: "assistant",
+  content: [
+    {
+      type: "text",
+      text: {
+        value: "Please go ahead and upload the file you'd like to post. I'll guide you through the next steps once it's uploaded.",
+        annotations: [],
+      },
+    }
+  ],
+  attachments: [],
+  metadata: {},
+}
+Event {
+  event: "thread.message.completed",
+  data: {
+    id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+    object: "thread.message",
+    created_at: 1724773958,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    status: "completed",
+    incomplete_details: null,
+    incomplete_at: null,
+    completed_at: 1724773961,
+    role: "assistant",
+    content: [
+      {
+        type: "text",
+        text: {
+          value: "Please go ahead and upload the file you'd like to post. I'll guide you through the next steps once it's uploaded.",
+          annotations: [],
+        },
+      }
+    ],
+    attachments: [],
+    metadata: {},
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.completed",
+  data: {
+    id: "step_nS9TyS8CFE8sFXsbOgHzynhD",
+    object: "thread.run.step",
+    created_at: 1724773958,
+    run_id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    type: "message_creation",
+    status: "completed",
+    cancelled_at: null,
+    completed_at: 1724773961,
+    expires_at: 1724774555,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "message_creation",
+      message_creation: {
+        message_id: "msg_I25yHEX7XCH0BfjevtXdmA3u",
+      },
+    },
+    usage: {
+      prompt_tokens: 1317,
+      completion_tokens: 25,
+      total_tokens: 1342,
+    },
+  },
+}
+Is the client stream closed? false
+Thread run completed {
+  id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+  object: "thread.run",
+  created_at: 1724773955,
+  assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+  thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+  status: "completed",
+  started_at: 1724773956,
+  expires_at: null,
+  cancelled_at: null,
+  failed_at: null,
+  completed_at: 1724773962,
+  required_action: null,
+  last_error: null,
+  model: "gpt-4o",
+  instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "post_image",
+        description: "Allow the user to post the image they uploaded to Instagram",
+        parameters: {
+          type: "object",
+          properties: {
+            file_URL: {
+              type: "string",
+              description: "The URL of the file that was uploaded by the user",
+            },
+          },
+          additionalProperties: false,
+          required: [ "symbol" ],
+        },
+        strict: false,
+      },
+    }
+  ],
+  tool_resources: {
+    code_interpreter: {
+      file_ids: [],
+    },
+  },
+  metadata: {},
+  temperature: 1,
+  top_p: 1,
+  max_completion_tokens: null,
+  max_prompt_tokens: null,
+  truncation_strategy: {
+    type: "auto",
+    last_messages: null,
+  },
+  incomplete_details: null,
+  usage: {
+    prompt_tokens: 1317,
+    completion_tokens: 25,
+    total_tokens: 1342,
+  },
+  response_format: {
+    type: "text",
+  },
+  tool_choice: "auto",
+  parallel_tool_calls: true,
+}
+Event {
+  event: "thread.run.completed",
+  data: {
+    id: "run_t4Vor2UDfOX2Puc0Emisq7tI",
+    object: "thread.run",
+    created_at: 1724773955,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_jdeAAVPhuvBKwZQ6WvLsJROR",
+    status: "completed",
+    started_at: 1724773956,
+    expires_at: null,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: 1724773962,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: {
+      prompt_tokens: 1317,
+      completion_tokens: 25,
+      total_tokens: 1342,
+    },
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Uploading file
+Form data {
+  userFile: Blob (103.57 KB) {
+    type: "image/png"
+  },
+}
+Received message {
+  message: "Post this image to instagram",
+  uploadFileURL: "/Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/1724773969016-img.png",
+}
+Message parsed Post this image to instagram
+Thread created {
+  id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+  object: "thread",
+  created_at: 1724773978,
+  metadata: {},
+  tool_resources: {},
+}
+This message contains a file upload /Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/1724773969016-img.png
+Message created {
+  id: "msg_MduOYojvvoVjERLdvQFjaMrX",
+  object: "thread.message",
+  created_at: 1724773978,
+  assistant_id: null,
+  thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+  run_id: null,
+  role: "user",
+  content: [
+    {
+      type: "text",
+      text: {
+        value: "The user uploaded a file, stored at /Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/1724773969016-img.png",
+        annotations: [],
+      },
+    }, {
+      type: "text",
+      text: {
+        value: "Post this image to instagram",
+        annotations: [],
+      },
+    }
+  ],
+  attachments: [],
+  metadata: {},
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.created",
+  data: {
+    id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    object: "thread.run",
+    created_at: 1724773978,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    status: "queued",
+    started_at: null,
+    expires_at: 1724774578,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.queued",
+  data: {
+    id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    object: "thread.run",
+    created_at: 1724773978,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    status: "queued",
+    started_at: null,
+    expires_at: 1724774578,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.in_progress",
+  data: {
+    id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    object: "thread.run",
+    created_at: 1724773978,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    status: "in_progress",
+    started_at: 1724773979,
+    expires_at: 1724774578,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.created",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step",
+    created_at: 1724773979,
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    type: "tool_calls",
+    status: "in_progress",
+    cancelled_at: null,
+    completed_at: null,
+    expires_at: 1724774578,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "tool_calls",
+      tool_calls: [],
+    },
+    usage: null,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.in_progress",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step",
+    created_at: 1724773979,
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    type: "tool_calls",
+    status: "in_progress",
+    cancelled_at: null,
+    completed_at: null,
+    expires_at: 1724774578,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "tool_calls",
+      tool_calls: [],
+    },
+    usage: null,
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            id: "call_f7ZjEo7DEwtC9dH9mIPu9Mro",
+            type: "function",
+            function: {
+              name: "post_image",
+              arguments: "",
+              output: null,
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "{\"",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "file",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "_URL",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "\":",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "\"/",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "Users",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "/al",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "ex",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "and",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "erg",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "ir",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "ard",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "et",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "/code",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "/projects",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "/",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "assistant",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "-chat",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "-stream",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "ing",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "/data",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "/uploads",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "/",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "172",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "477",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "396",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "901",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "6",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "-img",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: ".png",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Event {
+  event: "thread.run.step.delta",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step.delta",
+    delta: {
+      step_details: {
+        type: "tool_calls",
+        tool_calls: [
+          {
+            index: 0,
+            type: "function",
+            function: {
+              arguments: "\"}",
+            },
+          }
+        ],
+      },
+    },
+  },
+}
+Is the client stream closed? false
+Thread run requires action {
+  id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+  object: "thread.run",
+  created_at: 1724773978,
+  assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+  thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+  status: "requires_action",
+  started_at: 1724773979,
+  expires_at: 1724774578,
+  cancelled_at: null,
+  failed_at: null,
+  completed_at: null,
+  required_action: {
+    type: "submit_tool_outputs",
+    submit_tool_outputs: {
+      tool_calls: [
+        {
+          id: "call_f7ZjEo7DEwtC9dH9mIPu9Mro",
+          type: "function",
+          function: {
+            name: "post_image",
+            arguments: "{\"file_URL\":\"/Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/1724773969016-img.png\"}",
+          },
+        }
+      ],
+    },
+  },
+  last_error: null,
+  model: "gpt-4o",
+  instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "post_image",
+        description: "Allow the user to post the image they uploaded to Instagram",
+        parameters: {
+          type: "object",
+          properties: {
+            file_URL: {
+              type: "string",
+              description: "The URL of the file that was uploaded by the user",
+            },
+          },
+          additionalProperties: false,
+          required: [ "symbol" ],
+        },
+        strict: false,
+      },
+    }
+  ],
+  tool_resources: {
+    code_interpreter: {
+      file_ids: [],
+    },
+  },
+  metadata: {},
+  temperature: 1,
+  top_p: 1,
+  max_completion_tokens: null,
+  max_prompt_tokens: null,
+  truncation_strategy: {
+    type: "auto",
+    last_messages: null,
+  },
+  incomplete_details: null,
+  usage: null,
+  response_format: {
+    type: "text",
+  },
+  tool_choice: "auto",
+  parallel_tool_calls: true,
+}
+Posting image to instagram with arguments: {"file_URL":"/Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/1724773969016-img.png"}
+Is the client stream closed? true
+Event {
+  event: "thread.run.step.completed",
+  data: {
+    id: "step_d7TK41xLSrbDWBIdFITrQ3NS",
+    object: "thread.run.step",
+    created_at: 1724773979,
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    type: "tool_calls",
+    status: "completed",
+    cancelled_at: null,
+    completed_at: 1724773981,
+    expires_at: 1724774578,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "tool_calls",
+      tool_calls: [
+        {
+          id: "call_f7ZjEo7DEwtC9dH9mIPu9Mro",
+          type: "function",
+          function: {
+            name: "post_image",
+            arguments: "{\"file_URL\":\"/Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/1724773969016-img.png\"}",
+            output: "Image has been posted",
+          },
+        }
+      ],
+    },
+    usage: {
+      prompt_tokens: 1349,
+      completion_tokens: 41,
+      total_tokens: 1390,
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.run.queued",
+  data: {
+    id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    object: "thread.run",
+    created_at: 1724773978,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    status: "queued",
+    started_at: 1724773979,
+    expires_at: 1724774578,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.run.in_progress",
+  data: {
+    id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    object: "thread.run",
+    created_at: 1724773978,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    status: "in_progress",
+    started_at: 1724773982,
+    expires_at: 1724774578,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.run.step.created",
+  data: {
+    id: "step_zoX4z7HXo99jDllgPIEIPPu0",
+    object: "thread.run.step",
+    created_at: 1724773982,
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    type: "message_creation",
+    status: "in_progress",
+    cancelled_at: null,
+    completed_at: null,
+    expires_at: 1724774578,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "message_creation",
+      message_creation: {
+        message_id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+      },
+    },
+    usage: null,
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.run.step.in_progress",
+  data: {
+    id: "step_zoX4z7HXo99jDllgPIEIPPu0",
+    object: "thread.run.step",
+    created_at: 1724773982,
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    type: "message_creation",
+    status: "in_progress",
+    cancelled_at: null,
+    completed_at: null,
+    expires_at: 1724774578,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "message_creation",
+      message_creation: {
+        message_id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+      },
+    },
+    usage: null,
+  },
+}
+Is the client stream closed? true
+Message created {
+  id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+  object: "thread.message",
+  created_at: 1724773982,
+  assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+  thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+  run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+  status: "in_progress",
+  incomplete_details: null,
+  incomplete_at: null,
+  completed_at: null,
+  role: "assistant",
+  content: [],
+  attachments: [],
+  metadata: {},
+}
+Event {
+  event: "thread.message.created",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message",
+    created_at: 1724773982,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    status: "in_progress",
+    incomplete_details: null,
+    incomplete_at: null,
+    completed_at: null,
+    role: "assistant",
+    content: [],
+    attachments: [],
+    metadata: {},
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.in_progress",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message",
+    created_at: 1724773982,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    status: "in_progress",
+    incomplete_details: null,
+    incomplete_at: null,
+    completed_at: null,
+    role: "assistant",
+    content: [],
+    attachments: [],
+    metadata: {},
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: "Your",
+            annotations: [],
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " image",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " has",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " been",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " successfully",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " posted",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " to",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " Instagram",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: "!",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " Would",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " you",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " like",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " to",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " discuss",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " what",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " kind",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " of",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " content",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " could",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " attract",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " more",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " customers",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " and",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " generate",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " leads",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " for",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " your",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: " business",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.message.delta",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message.delta",
+    delta: {
+      content: [
+        {
+          index: 0,
+          type: "text",
+          text: {
+            value: "?",
+          },
+        }
+      ],
+    },
+  },
+}
+Is the client stream closed? true
+Message completed {
+  id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+  object: "thread.message",
+  created_at: 1724773982,
+  assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+  thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+  run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+  status: "completed",
+  incomplete_details: null,
+  incomplete_at: null,
+  completed_at: 1724773983,
+  role: "assistant",
+  content: [
+    {
+      type: "text",
+      text: {
+        value: "Your image has been successfully posted to Instagram! Would you like to discuss what kind of content could attract more customers and generate leads for your business?",
+        annotations: [],
+      },
+    }
+  ],
+  attachments: [],
+  metadata: {},
+}
+Event {
+  event: "thread.message.completed",
+  data: {
+    id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+    object: "thread.message",
+    created_at: 1724773982,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    status: "completed",
+    incomplete_details: null,
+    incomplete_at: null,
+    completed_at: 1724773983,
+    role: "assistant",
+    content: [
+      {
+        type: "text",
+        text: {
+          value: "Your image has been successfully posted to Instagram! Would you like to discuss what kind of content could attract more customers and generate leads for your business?",
+          annotations: [],
+        },
+      }
+    ],
+    attachments: [],
+    metadata: {},
+  },
+}
+Is the client stream closed? true
+Event {
+  event: "thread.run.step.completed",
+  data: {
+    id: "step_zoX4z7HXo99jDllgPIEIPPu0",
+    object: "thread.run.step",
+    created_at: 1724773982,
+    run_id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    type: "message_creation",
+    status: "completed",
+    cancelled_at: null,
+    completed_at: 1724773983,
+    expires_at: 1724774578,
+    failed_at: null,
+    last_error: null,
+    step_details: {
+      type: "message_creation",
+      message_creation: {
+        message_id: "msg_H10mH0qPaxv27c8ELZBWHurs",
+      },
+    },
+    usage: {
+      prompt_tokens: 1402,
+      completion_tokens: 31,
+      total_tokens: 1433,
+    },
+  },
+}
+Is the client stream closed? true
+Thread run completed {
+  id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+  object: "thread.run",
+  created_at: 1724773978,
+  assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+  thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+  status: "completed",
+  started_at: 1724773982,
+  expires_at: null,
+  cancelled_at: null,
+  failed_at: null,
+  completed_at: 1724773983,
+  required_action: null,
+  last_error: null,
+  model: "gpt-4o",
+  instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "post_image",
+        description: "Allow the user to post the image they uploaded to Instagram",
+        parameters: {
+          type: "object",
+          properties: {
+            file_URL: {
+              type: "string",
+              description: "The URL of the file that was uploaded by the user",
+            },
+          },
+          additionalProperties: false,
+          required: [ "symbol" ],
+        },
+        strict: false,
+      },
+    }
+  ],
+  tool_resources: {
+    code_interpreter: {
+      file_ids: [],
+    },
+  },
+  metadata: {},
+  temperature: 1,
+  top_p: 1,
+  max_completion_tokens: null,
+  max_prompt_tokens: null,
+  truncation_strategy: {
+    type: "auto",
+    last_messages: null,
+  },
+  incomplete_details: null,
+  usage: {
+    prompt_tokens: 2751,
+    completion_tokens: 72,
+    total_tokens: 2823,
+  },
+  response_format: {
+    type: "text",
+  },
+  tool_choice: "auto",
+  parallel_tool_calls: true,
+}
+Event {
+  event: "thread.run.completed",
+  data: {
+    id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    object: "thread.run",
+    created_at: 1724773978,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    status: "completed",
+    started_at: 1724773982,
+    expires_at: null,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: 1724773983,
+    required_action: null,
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: {
+      prompt_tokens: 2751,
+      completion_tokens: 72,
+      total_tokens: 2823,
+    },
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}
+Event {
+  event: "thread.run.requires_action",
+  data: {
+    id: "run_A585ET3RYvWnpsKs3vYAkzQV",
+    object: "thread.run",
+    created_at: 1724773978,
+    assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA",
+    thread_id: "thread_hIG7kuXdaTpy5uzhbiSajjXq",
+    status: "requires_action",
+    started_at: 1724773979,
+    expires_at: 1724774578,
+    cancelled_at: null,
+    failed_at: null,
+    completed_at: null,
+    required_action: {
+      type: "submit_tool_outputs",
+      submit_tool_outputs: {
+        tool_calls: [
+          {
+            id: "call_f7ZjEo7DEwtC9dH9mIPu9Mro",
+            type: "function",
+            function: {
+              name: "post_image",
+              arguments: "{\"file_URL\":\"/Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/1724773969016-img.png\"}",
+            },
+          }
+        ],
+      },
+    },
+    last_error: null,
+    model: "gpt-4o",
+    instructions: "# Context:\nYou are an expert marketing assistant which specialises in Instagram marketing for Blue Collar Home Service SMBs. \n\n# Objective:\nYour job is to collaborate with Blue Collar Home Service SMBs helping them develop a social media strategy guide. This guide will include three audience niches and three content pillars the SMB will use to act as the basis for content they create in the future. Your responsibility is to have a conversational back and forth with the owner of the SMB, helping them realise the value of posting on social media, and decide on which niches and pillars are suitable for their business to create content around. \n\n# Tools\npost_image: Users may ask for help to post images to instagram. Trigger this tool, which will allow them to upload an image and post it. \n\n# Style:\nYou will communicate in a professional yet conversational tone. Your responses are brief and to the point, typically 2-3 sentences long.\n\nYou will be question oriented. Your goal is to collboratively come up with this guide. Meaning you will frequently asks questions to guide the conversation and ensure understanding of the user's needs. This user needs to feel deeply involved in the process, and that the guide is relevant to their answers and business. \n\nYou will leverage social validation as a strategy to convince the user of the value of utilising a social media strategy for their SMB. \n\nYou will use simple language to explain concepts, making it accessible to the user.\n\nYou will offers practical suggestions and strategies tailored to the user's business.\nYou will builds on the user's ideas and concerns, showing active listening.\nYou will provide positive reinforcement for the user's ideas and engagement.\n\n# Audience\nYour responses should be approachable and convincing for your aidence. Your audience is Blue Collar Home Service SMBs. Their primary concerns lie in the tangible metrics that drive their business such as revenue, and knowing they have business coming for the next few weeks. \n\n# Response Example\nHere is an example of great responses as an agent. \n**User:** I'm not sure I understand why I need a social media strategy for my plumbing business. I mean, I get most of my business through word of mouth and traditional advertising. Can you explain how having an Instagram account will help me generate more leads?\"\n\n**Agent:** Outside of word of mouth social media is essentially a free way to promote and market your business. This will allow you to gain visibility, leading to more business for you plumbing service. \n\nYou're probably wondering how can social media help your plumbing business. It's worth looking at a use case. \"Detail Dane\" runs a car detailing business that specializes in cleaning and renovating old and classic cars. Here's his instagram page. https://www.instagram.com/detail_dane/. \n\nHe routinely posts videos of the transformation the cars he works with goes through. Getting tens of thousdands of views. He massively increased his backlog of work, and makes up to $25,000 a month from his affiliate sponsorship with a tool making company.\n\n**User:** Hmm, I see. So you're telling me that having a social media presence can help my business become more visible and attract more customers, kind of like free advertising? And that \"Detail Dane\" guy is making a killing by posting videos of his work on Instagram and getting sponsored?\n\nThat's pretty interesting. But I have to ask, how can I make sure that my plumbing business will get the same kind of attention and results on social media? I mean, cleaning and renovating old cars is a lot more visually interesting than fixing pipes, don't you think?\n\n**Agent:** It's important to develop a social media strategy that is aligned with your business. Detail dane made content related to ASMR transformations because it fit neatly with his business. Your plumbing business could benefit from another strategy. Is that something you would like to develop now?\n\n**User:** Alright, you've got me intrigued. If social media can really help my plumbing business grow, I'm willing to give it a try. I'm just not sure how to create content that people will actually want to see.\n\nYes, I'm interested in developing a social media strategy for my plumbing business. Can you help me figure out what kind of content would work best for my business? I'm open to any ideas you might have!\n\n**Agent:** Your content needs to reasonate with a specific audience to get engagement. These audience subsets are called 'Niches'. Think of them as groups of people that share similar demographic and interests. Detail dane for example tailors his content around severals Niches. Here is an example of one:\n- ASMR and Satisfying Content Viewers: People who seek satisfying videos of cars being cleaned for relaxation and sensory pleasure\n\nFor your plumbing business a niche that you can target is:\n- Home repair enthousiates: People who wish to learn about how to fix everyday plumbing issues. \nValue: The value you offer could be to show some DIY footage which explains how you fixed something. \n\n- DIY transformation fans: People who enjoy watching timelapses of plumbing work being performed. \nValue: You could film some timelapses of your work, or take photos of before and after of the work you've performed.",
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "post_image",
+          description: "Allow the user to post the image they uploaded to Instagram",
+          parameters: {
+            type: "object",
+            properties: {
+              file_URL: {
+                type: "string",
+                description: "The URL of the file that was uploaded by the user",
+              },
+            },
+            additionalProperties: false,
+            required: [ "symbol" ],
+          },
+          strict: false,
+        },
+      }
+    ],
+    tool_resources: {
+      code_interpreter: {
+        file_ids: [],
+      },
+    },
+    metadata: {},
+    temperature: 1,
+    top_p: 1,
+    max_completion_tokens: null,
+    max_prompt_tokens: null,
+    truncation_strategy: {
+      type: "auto",
+      last_messages: null,
+    },
+    incomplete_details: null,
+    usage: null,
+    response_format: {
+      type: "text",
+    },
+    tool_choice: "auto",
+    parallel_tool_calls: true,
+  },
+}

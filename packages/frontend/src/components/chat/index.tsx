@@ -17,6 +17,11 @@ export interface Message {
     content: TextContent[];
 }
 
+export interface MessageWithFileUpload {
+    message: Message;
+    uploadFileURL: string | null;
+}
+
 export const Chat = () => {
     const [messages, setMessages] = useState<Message[]>([
         {
@@ -107,14 +112,21 @@ export const Chat = () => {
     }
 
     const mutation = useMutation({
-        mutationFn: async (message: Message) => {
+        mutationFn: async ({ message, uploadFileURL }: MessageWithFileUpload) => {
             console.log("Sending message", message);
+            const messageToSend = {
+                message: message.content[0].text.value,
+                uploadFileURL: uploadFileURL,
+            }
+
+            console.log("Message to send", messageToSend);
+
             const response = await fetch("http://localhost:3000/api/chat/sse", {
                 method: "POST",
                 headers: {
                     "Content-Type": "text/event-stream",
                 },
-                body: JSON.stringify({ message: message.content[0].text.value }),
+                body: JSON.stringify(messageToSend),
             });
             if (!response.ok) {
                 throw new Error("Response is not ok");

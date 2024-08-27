@@ -2,21 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Paperclip, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useMutation, UseMutationResult } from "@tanstack/react-query";
 
-type UserFileUpload = {
+export type UserFileUpload = {
     file: File;
 };
 
 interface UploadFileProps {
     setPreview: (preview: string | null) => void;
-    preview: string | null;
     file: File | null;
     setFile: (file: File | null) => void;
+    uploadMutation: UseMutationResult<void, Error, UserFileUpload, unknown>;
 }
 
-export const UploadFile = ({ setPreview, preview, file, setFile }: UploadFileProps) => {
+export const UploadFile = ({ setPreview, file, setFile, uploadMutation }: UploadFileProps) => {
     const { control, handleSubmit, reset } = useForm<UserFileUpload>();
-    const [uploading, setUploading] = useState<boolean>(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -27,28 +27,15 @@ export const UploadFile = ({ setPreview, preview, file, setFile }: UploadFilePro
         }
     }, [file]);
 
+
     const onSubmit: SubmitHandler<UserFileUpload> = async (data) => {
         console.log("Submitting form ", data.file);
-        setUploading(true);
 
         const formData = new FormData();
         formData.append("userFile", data.file);
 
-        try {
-            const response = await fetch('http://localhost:3000/api/chat/upload', {
-                method: 'POST',
-                body: formData,
-            });
-
-            console.log("Response from server: ", response);
-            const responseData = await response.json();
-            console.log("Data from server: ", responseData);
-        } catch (error) {
-            console.error("Error uploading file:", error);
-        } finally {
-            setUploading(false);
-            reset();
-        }
+        uploadMutation.mutate(data);
+        reset();
     };
 
     const handlePaperclipClick = () => {
@@ -76,6 +63,9 @@ export const UploadFile = ({ setPreview, preview, file, setFile }: UploadFilePro
                         />
                         <Button type="button" onClick={handlePaperclipClick}>
                             <Paperclip className="w-6 h-6" />
+                        </Button>
+                        <Button type="submit">
+                            Upload
                         </Button>
                     </div>
                 )}

@@ -1,18 +1,19 @@
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { Message } from ".";
+import { Message, MessageWithFileUpload } from ".";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import { UseMutationResult } from "@tanstack/react-query";
-import { UploadFile } from "../upload-file";
+import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { UploadFile, UserFileUpload } from "../upload-file";
 import { useState } from "react";
 import { X } from "lucide-react";
+
 type UserInputMessage = {
     content: string,
 };
 
 type InputMessageProps = {
     setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
-    mutation: UseMutationResult<void, Error, Message, unknown>;
+    mutation: UseMutationResult<void, Error, MessageWithFileUpload, unknown>;
 };
 
 
@@ -21,8 +22,32 @@ export const InputMessage = ({ setMessages, mutation }: InputMessageProps) => {
     const { control, handleSubmit, reset } = useForm<UserInputMessage>();
     const [file, setFile] = useState<File | null>(null);
     const [showDelete, setShowDelete] = useState(false);
+    const [uploadFileURL, setUploadFileURL] = useState<string | null>(null);
 
     const [preview, setPreview] = useState<string | null>(null);
+
+    const uploadMutation = useMutation({
+        mutationFn: async (uploadedData: UserFileUpload) => {
+            try {
+                const formData = new FormData();
+                formData.append("userFile", uploadedData.file);
+
+                const response = await fetch('http://localhost:3000/api/chat/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to upload file');
+                }
+                const data = await response.json();
+                console.log("Data from server: ", data);
+                console.log("Upload file URL: ", data.fileURL);
+                setUploadFileURL(data.fileURL); // TODO: Add type safety here
+            } catch (error) {
+                console.error("Error uploading file: ", error);
+            }
+        }
+    });
 
     const onSubmit: SubmitHandler<UserInputMessage> = (data) => {
         console.log(data);
@@ -32,19 +57,21 @@ export const InputMessage = ({ setMessages, mutation }: InputMessageProps) => {
                 role: "user",
                 content: [{ type: "text", text: { value: data.content } }],
             },
-        ]);
+        ])
 
-        reset();
+        console.log("Upload file URL: ", uploadFileURL);
+
         mutation.mutate({
-            content: [{ type: "text", text: { value: data.content } }],
-            role: "user"
+            uploadFileURL: uploadFileURL,
+            message: {
+                content: [{ type: "text", text: { value: data.content } }],
+                role: "user"
+            }
         });
-    };
+    }
 
     const handleDeleteFile = () => {
         console.log("Deleting file");
-        // console.log(file, preview, showDelete, uploading);
-        console.log("preview", preview);
         setFile(null);
         setPreview('');
         reset();
@@ -98,7 +125,7 @@ export const InputMessage = ({ setMessages, mutation }: InputMessageProps) => {
                 />
             </form >
             <div className="flex justify-between">
-                <UploadFile setPreview={setPreview} preview={preview} file={file} setFile={setFile} />
+                <UploadFile setPreview={setPreview} file={file} setFile={setFile} uploadMutation={uploadMutation} />
                 <Button type="submit" onClick={handleSubmit(onSubmit)}>
                     Send Message
                 </Button>

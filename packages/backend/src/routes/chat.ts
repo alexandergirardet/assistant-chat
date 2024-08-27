@@ -3,34 +3,7 @@ import { zValidator } from "@hono/zod-validator";
 import { streamSSE } from 'hono/streaming'
 import { z } from "zod";
 import { openai } from "../lib/ai";
-import { AssistantStreamEvent } from "openai/resources/beta/assistants";
-
-let id = 0;
-
-
-function* generateFragments(sentence: string) {
-    const words = sentence.split(' ');
-    // let fragment = '';
-    for (const word of words) {
-        yield {
-            event: "thread.message.delta",
-            data: {
-                "id": "msg_123",
-                "object": "thread.message.delta",
-                "delta": {
-                    "content": [
-                        {
-                            "index": id++,
-                            "type": "text",
-                            "text": { "value": word, "annotations": [] }
-                        }
-                    ]
-                }
-            }
-
-        }
-    }
-}
+import { AssistantEventHandler } from "../lib/assistant";
 
 export const chatRoutes = new Hono()
     .post("/message",
@@ -50,48 +23,86 @@ export const chatRoutes = new Hono()
             const body = await c.req.json()
             console.log("Received message", body);
 
-            const { message: receivedMessage } = body;
+            const { message: receivedMessage, uploadFileURL } = body; // Todo: Add type safety here
             console.log("Message parsed", receivedMessage);
 
-            const thread = await openai.beta.threads.create();
-            const message = await openai.beta.threads.messages.create(
-                thread.id,
-                {
-                    role: "user",
-                    content: receivedMessage
-                }
-            );
-
+            const thread = await openai.beta.threads.create(); // TODO: Need somewhere to persist the thread id
             console.log("Thread created", thread);
+            let message;
+
+            if (uploadFileURL) {
+                console.log("This message contains a file upload", uploadFileURL);
+                message = await openai.beta.threads.messages.create(
+                    thread.id,
+                    {
+                        role: "user",
+                        content: [
+                            { type: "text", text: "The user uploaded a file, stored at " + uploadFileURL },
+                            { type: "text", text: receivedMessage }
+                        ]
+                    },
+                );
+            } else {
+                message = await openai.beta.threads.messages.create(
+                    thread.id,
+                    {
+                        role: "user",
+                        content: receivedMessage
+                    }
+                );
+            }
+
             console.log("Message created", message);
 
-            const assistantStream = await openai.beta.threads.runs.create(
-                thread.id,
-                { assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA", stream: true }
-            );
+            const streamPromise = new Promise(async (resolve, reject) => {
+                try {
+                    const assistantEventHandler = new AssistantEventHandler(stream, openai);
+                    assistantEventHandler.on("event", assistantEventHandler.onEvent.bind(assistantEventHandler));
 
-            for await (const event of assistantStream) {
-                if (event.event === "thread.message.delta") {
-                    await stream.writeSSE({
-                        event: event.event,
-                        data: JSON.stringify(event.data)
-                    });
+                    const assistantStream = await openai.beta.threads.runs.stream(
+                        thread.id,
+                        { assistant_id: "asst_2fJJOR7YAxqDeoSfmh1t9BtA", stream: true },
+                        assistantEventHandler
+                    );
+
+                    for await (const event of assistantStream) {
+                        assistantEventHandler.emit("event", event);
+                    }
+                    // Wait for any ongoing processing to complete
+                    // !NOTE: This is a result of one OAI stream ends for tools
+                    //   - but it can open another one for the tool response
+                    while (assistantEventHandler.isProcessing) {
+                        await new Promise((resolve) =>
+                            setTimeout(resolve, 100)
+                        )
+                    }
+
+                    resolve(0)
+                } catch (error) {
+                    reject(error)
                 }
-                if (event.event === "thread.run.completed") {
-                    await stream.writeSSE({
-                        event: event.event,
-                        data: JSON.stringify(event.data)
-                    });
-                    console.log("Thread run completed", event.data);
-                    await stream.close();
-                }
-                if (event.event === "thread.message.created") {
-                    console.log("Message created", event.data);
-                    await stream.writeSSE({
-                        event: event.event,
-                        data: JSON.stringify(event.data)
-                    });
-                }
-            }
-        });
+            })
+            await streamPromise;
+        })
+    }).post('/upload', async (c) => {
+        console.log("Uploading file");
+        const body = await c.req.parseBody()
+        console.log("Form data", body);
+
+        const file = body['userFile'] as File;
+        if (!file) {
+            return c.json({ error: 'No file uploaded' }, 400);
+        }
+
+        // Generate a unique filename
+        const fileName = `${Date.now()}-${file.name}`;
+        const filePath = `/Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/${fileName}`;
+
+        // Write the file to local storage
+        await Bun.write(filePath, file);
+
+        // Generate a URL for the file
+        const fileURL = `/Users/alexandergirardet/code/projects/assistant-chat-streaming/data/uploads/${fileName}`;
+
+        return c.json({ fileURL: fileURL });
     })

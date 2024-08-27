@@ -24,27 +24,27 @@ export const Threads = () => {
       content: "Thread 3 content",
     },
   ]);
-    return (
+  return (
     <div className="border-1 col-span-1">
-        <Card>
-          <CardHeader>
-            <CardTitle>Threads</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul>
+      <Card>
+        <CardHeader>
+          <CardTitle>Threads</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul>
             {threads.map((thread: Thread) => {
               return (
                 <div>
                   <li key={thread.id}>
                     Title: {thread.title}
                     Content: <p>{thread.content}</p>
-                    </li>
+                  </li>
                 </div>
               )
             })}
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
-    )
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  )
 }
