@@ -5,9 +5,10 @@ import remarkMath from "remark-math";
 
 interface MessagesProps {
     messages: Message[];
+    messagesEndRef: React.RefObject<HTMLDivElement>;
 }
 
-export const Messages = ({ messages }: MessagesProps) => {
+export const Messages = ({ messages, messagesEndRef }: MessagesProps) => {
     const escapeBackticks = (str: string) => {
         return str.replace(/`/g, "\\`");
     };
@@ -39,6 +40,7 @@ export const Messages = ({ messages }: MessagesProps) => {
                                 </MemoizedReactMarkdown>
                             ) : null}
                         </span>
+                        <div ref={messagesEndRef} />
                     </div>
                 )
             }
