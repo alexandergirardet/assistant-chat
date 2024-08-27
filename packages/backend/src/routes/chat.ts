@@ -38,7 +38,7 @@ export const chatRoutes = new Hono()
             const body = await c.req.json()
             // console.log(id, content, sender);
             console.log("Received message", body);
-            const { id, content, sender } = body;
+            const { id, content } = body;
             return c.json({
                 id: id + 1,
                 content: "I am a bot and you sent me " + content,
@@ -49,14 +49,16 @@ export const chatRoutes = new Hono()
         return streamSSE(c, async (stream) => {
             const body = await c.req.json()
             console.log("Received message", body);
-            const { id, content, sender } = body;
+
+            const { message: receivedMessage } = body;
+            console.log("Message parsed", receivedMessage);
 
             const thread = await openai.beta.threads.create();
             const message = await openai.beta.threads.messages.create(
                 thread.id,
                 {
                     role: "user",
-                    content: content
+                    content: receivedMessage
                 }
             );
 
