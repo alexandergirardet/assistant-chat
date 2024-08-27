@@ -13,38 +13,37 @@ export const Messages = ({ messages }: MessagesProps) => {
     };
     return (
         <div className="flex-grow">
-            {messages.map((message: Message) => {
+            {messages.map((message: Message, index: number) => {
                 return (
-                    message.role === "user" ? (
-                        <div className="w-full flex justify-end">
-                            <p className="text-sm">{message.content[0].text.value}</p>
-                        </div>
-                    ) : (
-                        <div className="w-full flex justify-start">
-                            <p className="text-sm">{message.content[0].text.value}</p>
-                        </div>
-                    )
+                    <div key={index} className={`mb-2 ${message.role === "user" ? "text-right" : "text-left"}`}>
+                        <span
+                            className={`inline-block rounded-lg p-2 ${message.role === "user"
+                                ? "bg-primary text-white"
+                                : "bg-gray-100 text-gray-800"
+                                }`}
+                        >
+                            {message.content[0].type === "text" ? (
+                                <MemoizedReactMarkdown
+                                    className="dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 prose break-words"
+                                    remarkPlugins={[remarkGfm, remarkMath]}
+                                    components={{
+                                        p({ children }) {
+                                            return <p className="mb-2 last:mb-0">{children}</p>;
+                                        },
+                                        code({ node, className, children, ...props }) {
+                                            return <code className={className} {...props}>{children}</code>;
+                                        },
+                                    }}
+                                >
+                                    {escapeBackticks(message.content[0]?.text?.value)}
+                                </MemoizedReactMarkdown>
+                            ) : null}
+                        </span>
+                    </div>
                 )
             }
             )
             }
-        </div>
+        </div >
     )
 }
-
-// {msg.content[0].type === "text" ? (
-//     <MemoizedReactMarkdown
-//       className="dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 prose break-words"
-//       remarkPlugins={[remarkGfm, remarkMath]}
-//       components={{
-//         p({ children }) {
-//           return <p className="mb-2 last:mb-0">{children}</p>;
-//         },
-//         code({ node, inline, className, children, ...props }) {
-//           // ... (code block component remains unchanged)
-//         },
-//       }}
-//     >
-//       {escapeBackticks(msg.content[0]?.text?.value)}
-//     </MemoizedReactMarkdown>
-//   ) : null}
